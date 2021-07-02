@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-card class="mat-card-reshaped">
+          <img class="thumbnail" src="/assets/img/single_user.png" alt="" />
+          <div class="card-body">
+            <div>
+              <strong>Display Name:</strong>
+              <p>{{ profile.displayName }}</p>
+            </div>
+            <div>
+              <strong>Subscribed to:</strong>
+              <p>{{ profile.subscriptionCount}}</p>
+            </div>
+            <div>
+              <strong>Subscribers:</strong>
+              <p>{{ profile.subscribersCount }}</p>
+            </div>
+            <div>
+              <app-subscriptions *ngIf="profile.username != username" [profile]="profile"></app-subscriptions>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <div class="col-sm-8">
+        <mat-card class="mat-card-reshaped">
+          <div class="tab-panel">
+            <tabset>
+              <tab heading="Videos">
+                <br />
+                <div class="row justify-content-end">
+                  <div>
+                    <button mat-raised-button class="newButton" color="accent" >Dodaj video</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div *ngFor="let post of posts" class="col-lg-3 col-md-6 col-sm-12">
+                    <app-post-card [post]="post"></app-post-card>
+                  </div>
+                </div>
+              </tab>
+            </tabset>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+</div>
+  
